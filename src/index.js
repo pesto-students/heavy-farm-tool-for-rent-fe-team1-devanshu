@@ -7,7 +7,7 @@ import { configureStore } from "./store";
 import reportWebVitals from "./reportWebVitals";
 import { ChakraProvider } from "@chakra-ui/react";
 import { BrowserRouter } from "react-router-dom";
-import HomePage from "./components/HomePage";
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
 const store = configureStore();
 root.render(
@@ -16,7 +16,6 @@ root.render(
       <BrowserRouter>
         <ChakraProvider>
           <App />
-          <HomePage />
         </ChakraProvider>
       </BrowserRouter>
     </Provider>
