@@ -1,24 +1,16 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import { BrowserRouter as Router } from "react-router-dom";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import App from "./App";
 import { Provider } from "react-redux";
 import { configureStore } from "./store";
-import reportWebVitals from "./reportWebVitals";
-import { ChakraProvider } from "@chakra-ui/react";
-import { BrowserRouter } from "react-router-dom";
-
-const root = ReactDOM.createRoot(document.getElementById("root"));
+import { createRoot } from "react-dom/client";
 const store = configureStore();
-
-ReactDOM.render(
+const container = document.getElementById("root");
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
     <Router>
-      <ChakraProvider>
-        <App />
-      </ChakraProvider>
+      <App />
     </Router>
-  </React.StrictMode>,
-  document.getElementById("root")
+  </React.StrictMode>
 );
