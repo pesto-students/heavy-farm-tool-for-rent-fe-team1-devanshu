@@ -292,17 +292,27 @@ const HomePage = () => {
     setSearchQuery(lowerCase);
   };
 
-  const filterData = post.filter((el) => {
-    if (searchQuery === "" && !category) {
+  const filtering = () => {
+  
+  return  post?.filter((el) => { 
+  if (searchQuery ===""&& category === "") {
+     
       return el;
-    } else if (searchQuery) {
-      return el.title.toLowerCase().includes(searchQuery);
     }
-  });
+      if (searchQuery !== "") {
+        return el.title.toLowerCase().includes(searchQuery);
+      } if(category !== undefined ) {      
+        return el.ProductType === category
+      } 
+
+        
+    });
+  }
 
   const handleProductType = (e) => {
     console.log(e.target.value);
     setCategory(e.target.value);
+   filtering()
   };
 
   useEffect(() => {
@@ -338,7 +348,7 @@ const HomePage = () => {
         </label>
         <div class="relative">
           <div class="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            <svg
+            {/* <svg
               aria-hidden="true"
               class="w-5 h-5 text-gray-500 dark:text-gray-400"
               fill="none"
@@ -352,34 +362,36 @@ const HomePage = () => {
                 stroke-width="2"
                 d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
               ></path>
-            </svg>
+            </svg> */}
           </div>
+          <div class="flex justify-center align-center gap-x-4  pt-10">
           <input
             onChange={onSearchHandler}
             value={searchQuery}
             type="search"
             id="default-search"
-            class="block p-4 pl-10 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="block p-4 pl-10  flex   text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="Search Mockups, Logos..."
             required
           />
           <button
             type="submit"
-            class="text-white absolute right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            class="text-white  right-2.5 bottom-2.5 bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
           >
             Search
           </button>
+          </div>
         </div>
       </form>
       <section class="bg-white dark:bg-gray-900">
         <div class="py-8 px-4 mx-auto max-w-screen-xl sm:py-16 lg:px-6">
           <div class="max-w-screen-md mb-8 lg:mb-16">
             <h2 class="mb-4 text-4xl tracking-tight font-extrabold text-gray-900 dark:text-white">
-              Designed for business teams like yours
+             
             </h2>
             <p class="text-gray-500 sm:text-xl dark:text-gray-400">
-              Here at Flowbite we focus on markets where technology, innovation,
-              and capital can unlock long-term value and drive economic growth.
+              {/* Here at Flowbite we focus on markets where technology, innovation,
+              and capital can unlock long-term value and drive economic growth. */}
             </p>
           </div>
           <label
@@ -391,16 +403,17 @@ const HomePage = () => {
           <select
             onChange={handleProductType}
             id="type"
-            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+            class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-32  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
+            
             <option value="irrigator">irrigator</option>
             <option value="tilter">tilter</option>
             <option value="plougher">plougher</option>
             <option value="harvester">harvester</option>
           </select>
           <div class="space-y-8 md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-            {filterData &&
-              filterData.map((item, index) => (
+            {
+              filtering().map((item, index) => (
                 <article>
                   <Link
                     to={"/product/" + item.slug.current}

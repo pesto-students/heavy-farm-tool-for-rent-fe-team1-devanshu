@@ -58,7 +58,7 @@ const SingleProduct = () => {
             solvers. Small enough to be simple and quick.
           </p> */}
         </div>
-        <div className="grid grid-cols-2 gap-4 mt-8">
+        {/* <div className="grid grid-cols-2 gap-4 mt-8">
           <img
             className="w-full rounded-lg"
             src={
@@ -76,7 +76,7 @@ const SingleProduct = () => {
             ).url()}
             alt="office content 2"
           />
-        </div>
+        </div> */}
       </div>
     </section>
     //   <section class="bg-white dark:bg-gray-900">
