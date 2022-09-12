@@ -1,20 +1,8 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-import { Form, Alert } from "react-bootstrap";
+
 import "react-phone-number-input/style.css";
-import {
-  Container,
-  Button,
-  Box,
-  InputLeftAddon,
-  Input,
-  InputGroup,
-  HStack,
-  VStack,
-  Heading,
-  useBreakpointValue,
-  Stack,
-} from "@chakra-ui/react";
+
 import { useUserAuth } from "../context/UserAuthContext";
 
 const PhoneSignUp = () => {
@@ -138,13 +126,16 @@ const PhoneSignUp = () => {
           />
           Heavy Farm
         </a>
-        <div className="w-full bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+
+
+        <div className=" bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
+
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Log in With Phone Number
             </h1>
             <form
-              style={{ display: !flag ? "block" : "none" }}
+              style={{ display: !flag ? "block" : "" }}
               className="space-y-4 md:space-y-6"
               action="#"
             >
@@ -159,8 +150,8 @@ const PhoneSignUp = () => {
                   type="tel"
                   name="tel"
                   id="tel"
-                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                  placeholder="999999999"
+                  className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                  placeholder=""
                   required=""
                   onChange={(e) => setNumber(e.target.value)}
                 />
@@ -170,6 +161,8 @@ const PhoneSignUp = () => {
                 {toggle ? (
                   <>
                     <input
+                      className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+
                       placeholder="Enter OTP"
                       // maxWidth={"40%"}
                       onChange={(e) => setOtp(e.target.value)}
