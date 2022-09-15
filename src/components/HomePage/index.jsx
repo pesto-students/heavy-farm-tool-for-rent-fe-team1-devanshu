@@ -147,7 +147,7 @@ const HomePage = () => {
                       <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
                         <a href="#">
                           <img
-                            className="p-8 rounded-t-lg"
+                            className="p-8 rounded-t-lg min-h-330"
                             src={item.mainImage.asset.url}
                             alt={item.mainImage.alt}
                           />

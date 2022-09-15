@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import sanityClient from "../../client";
 import { useParams } from "react-router-dom";
-import imageURLBuilder from "@sanity/image-url";
+// import imageURLBuilder from "@sanity/image-url";
 
-const builder = imageURLBuilder(sanityClient);
-function urlFor(source) {
-  return builder.image(source);
-}
+// const builder = imageURLBuilder(sanityClient);
+// function urlFor(source) {
+//   return builder.image(source);
+// }
 const SingleProduct = () => {
   const [productDetail, setProductDetail] = useState(null);
   const { slug } = useParams();
