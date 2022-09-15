@@ -1,3 +1,4 @@
+import { m } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import sanityClient from "../../client.js";
@@ -32,7 +33,6 @@ const HomePage = () => {
   }
 
   const handleProductType = (e) => {
-    console.log(e.target.value);
     setCategory(e.target.value);
     filtering()
   };
@@ -58,7 +58,7 @@ const HomePage = () => {
       .then((data) => setPost(data))
       .catch((error) => console.log(error));
   }, []);
-
+  console.log("showed data",post)
   return (
     <>
       <Header />
@@ -144,12 +144,13 @@ const HomePage = () => {
                       to={"/product/" + item.slug.current}
                       key={item.slug.current}
                     >
-                      <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700">
+                      <div className="w-full max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700" key={index}>
                         <a href="#">
                           <img
                             className="p-8 rounded-t-lg"
                             src={item.mainImage.asset.url}
                             alt={item.mainImage.alt}
+                            height={"300px"}
                           />
                         </a>
 
