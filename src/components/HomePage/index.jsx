@@ -175,7 +175,7 @@ const HomePage = () => {
           </div>
         </section>
       </main>
-      <Footer/>
+     {post && post.length > 0 ? <Footer/>: <div></div>} 
     </>
   );
 };

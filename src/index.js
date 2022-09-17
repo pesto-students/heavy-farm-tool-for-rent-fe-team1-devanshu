@@ -5,12 +5,12 @@ import { createRoot } from "react-dom/client";
 const container = document.getElementById("root");
 const root = createRoot(container);
 root.render(
-  <React.StrictMode>
+ 
     <BrowserRouter>
       <Routes>
         <Route path="*" element={<App />}>
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>,
+  ,
 );

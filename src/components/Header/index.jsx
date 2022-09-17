@@ -26,7 +26,7 @@ const Header = () => {
         <img
           src={require('./logo.png')}
           className="mr-3 h-6 sm:h-9"
-          alt="Flowbite Logo"
+          alt="Heavy Farm Logo"
         />
         <span className="self-center whitespace-nowrap text-xl font-semibold dark:text-white">
           Heavy Farm Tool
