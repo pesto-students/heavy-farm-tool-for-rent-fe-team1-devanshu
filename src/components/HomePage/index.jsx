@@ -1,22 +1,23 @@
-import { m } from "framer-motion";
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import sanityClient from "../../client.js";
+import { useSelector, useDispatch } from "react-redux";
+import { getProductListing } from "../../Actions/homepageActions";
 import Header from "../Header/index.jsx";
-import Footer from "../Footer/index.jsx"
-
+import Footer from "../Footer/index.jsx";
+import Loader from "../Loader";
 const HomePage = () => {
-  const [post, setPost] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
   const [category, setCategory] = useState("");
-
+  const dispatch = useDispatch();
+  const { productListing } = useSelector((state) => state.home);
+  console.log(productListing);
   const onSearchHandler = (e) => {
     let lowerCase = e.target.value.toLowerCase();
     setSearchQuery(lowerCase);
   };
 
   const filtering = () => {
-    return post?.filter((el) => {
+    return productListing?.filter((el) => {
       if (searchQuery === "" && category === "") {
         return el;
       }
@@ -38,32 +39,14 @@ const HomePage = () => {
   };
 
   useEffect(() => {
-    sanityClient
-      .fetch(
-        `*[_type == "product"]{
-      title,
-      slug,
-      reviews,
-      pricePerDay,
-      ProductType,
-      mainImage{
-        asset->{
-          _id,
-          url
-        },
-        alt
-      }
-    }`
-      )
-      .then((data) => setPost(data))
-      .catch((error) => console.log(error));
+    dispatch(getProductListing());
   }, []);
-  console.log("showed data", post);
+
   return (
     <>
       <Header />
+
       <main>
-     
         <form>
           <label
             htmlFor="default-search"
@@ -72,9 +55,7 @@ const HomePage = () => {
             Search
           </label>
           <div className="relative">
-            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none">
-            
-            </div>
+            <div className="flex absolute inset-y-0 left-0 items-center pl-3 pointer-events-none"></div>
             <div className="flex justify-center align-center gap-x-4  pt-10">
               <input
                 onChange={onSearchHandler}
@@ -123,12 +104,13 @@ const HomePage = () => {
               <option value="harvester">harvester</option>
             </select>
             <div className=" md:grid md:grid-cols-2 lg:grid-cols-3 md:gap-12 md:space-y-0">
-              {filtering().map((item, index) => (
-                <article 
-                style={{ marginTop:"10px"}}
-                 className="flex justify-center ">
+              {!productListing ? <Loader /> : null}
+              {filtering()?.map((item, index) => (
+                <article
+                  style={{ marginTop: "10px" }}
+                  className="flex justify-center "
+                >
                   <div
-                  
                     className="h-full w-full  max-w-sm bg-white rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700"
                     key={index}
                   >
@@ -145,7 +127,8 @@ const HomePage = () => {
 
                       <div className="flex items-center mt-2.5 mb-5">
                         <span className="bg-blue-100 text-blue-800 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded dark:bg-blue-200 dark:text-blue-800 ml-3">
-                          {item.reviews && item.reviews[0].rating || "No-rating"}
+                          {(item.reviews && item.reviews[0].rating) ||
+                            "No-rating"}
                         </span>
                       </div>
                       <div className="flex justify-between items-center">
@@ -175,7 +158,7 @@ const HomePage = () => {
           </div>
         </section>
       </main>
-     {post && post.length > 0 ? <Footer/>: <div></div>} 
+      {productListing && productListing.length > 0 ? <Footer /> : <div></div>}
     </>
   );
 };

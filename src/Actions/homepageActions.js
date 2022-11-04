@@ -1,13 +1,26 @@
-import api from "./../Api/api";
-
+import sanityClient from "../client";
 export const GET_HOMEPAGE_DATA = "@homepage/home-page";
 
-export function getHomePageData() {
+export function getProductListing() {
   return async (dispatch) => {
     try {
-      const result = await api.get(
-        "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
+      const result = await sanityClient.fetch(
+        `*[_type == "product"]{
+      title,
+      slug,
+      reviews,
+      pricePerDay,
+      ProductType,
+      mainImage{
+        asset->{
+          _id,
+          url
+        },
+        alt
+      }
+    }`
       );
+
       console.log(result);
       dispatch({
         type: GET_HOMEPAGE_DATA,

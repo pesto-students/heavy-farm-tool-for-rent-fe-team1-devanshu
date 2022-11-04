@@ -57,10 +57,10 @@ const SingleProduct = () => {
     }`
       )
       .then((data) => {
-        console.log("slug data", data);
+        // console.log("slug data", data);
         setProductDetail(data[0]);
-      })
-      .catch((error) => console.log("error", error));
+      });
+    // .catch((error) => console.log("error", error));
   }, [slug]);
 
   return (

@@ -1,8 +1,6 @@
 import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-
+import { useNavigate } from "react-router-dom";
 import "react-phone-number-input/style.css";
-
 import { useUserAuth } from "../context/UserAuthContext";
 
 const PhoneSignUp = () => {
@@ -16,7 +14,7 @@ const PhoneSignUp = () => {
 
   const getOtp = async (e) => {
     e.preventDefault();
-    console.log(number);
+    // console.log(number);
     setError("");
     let val = "+91" + number;
     // setNumber(prev=>val)
@@ -34,12 +32,12 @@ const PhoneSignUp = () => {
   const verifyOtp = async (e) => {
     e.preventDefault();
     setError("");
-    console.log("hi");
+    // console.log("hi");
     if (otp === "" || otp === null) return;
     try {
       await result.confirm(otp);
       navigate("/home");
-      console.log("verify OTP");
+      // console.log("verify OTP");
     } catch (err) {
       setError(err.message);
     }
@@ -47,72 +45,6 @@ const PhoneSignUp = () => {
 
   const [toggle, setToggle] = useState(false);
   return (
-    // <section
-    //   style={{
-    //     display: "flex",
-    //     height: "100vh",
-    //     justifyContent: "center",
-    //     alignItems: "center",
-    //   }}
-    // >
-    //   <Container
-    //     centerContent
-    //     py={{ base: "12", md: "24" }}
-    //     px={{ base: "0", sm: "8" }}
-    //   >
-    //     <Heading size={useBreakpointValue({ base: "xs", md: "sm" })}>
-    //       Log in With Phone Number
-    //     </Heading>
-    //     <Box maxW="md" borderWidth="1px" borderRadius="lg">
-    //       {error && <Alert variant="danger">{error}</Alert>}
-    //       <Form
-    //         onSubmit={getOtp}
-    //         // style={{ display: !flag ? "block" : "none" }}
-    //       >
-    //         <Box padding={"20px"}>
-    //           <InputGroup>
-    //             <InputLeftAddon children="+91" />
-    //             <Input
-    //               type="tel"
-    //               placeholder="phone number"
-    //               value={number}
-    //               onChange={(e) => setNumber(e.target.value)}toggle
-    //             />
-    //           </InputGroup>
-    //           <VStack>
-    //             <div id="recaptcha-container"></div>
-    //           </VStack>
-    //           <HStack>
-    //             {toggle ? (
-    //               <VStack p={"1.5"} h={"100%"} align="stretch">
-    //                 <Input
-    //                   placeholder="Enter OTP"
-    //                   maxWidth={"40%"}
-    //                   onChange={(e) => setOtp(e.target.value)}
-    //                 ></Input>
-    //                 <Button colorScheme="teal" size="lg" onClick={verifyOtp}>
-    //                   Submit
-    //                 </Button>
-    //               </VStack>
-    //             ) : (
-    //               <Button
-    //                 colorScheme="teal"
-    //                 mt="10"
-    //                 size="lg"
-    //                 onClick={(e) => {
-    //                   getOtp(e);
-    //                   setToggle((prev) => !prev);
-    //                 }}
-    //               >
-    //                 Get OTP
-    //               </Button>
-    //             )}
-    //           </HStack>
-    //         </Box>
-    //       </Form>
-    //     </Box>
-    //   </Container>
-    // </section>
     <section className="bg-gray-50 dark:bg-gray-900">
       <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
         <a
@@ -127,9 +59,7 @@ const PhoneSignUp = () => {
           Heavy Farm
         </a>
 
-
         <div className=" bg-white rounded-lg shadow dark:border md:mt-0 sm:max-w-md xl:p-0 dark:bg-gray-800 dark:border-gray-700">
-
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
             <h1 className="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white">
               Log in With Phone Number
@@ -162,7 +92,6 @@ const PhoneSignUp = () => {
                   <>
                     <input
                       className="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-
                       placeholder="Enter OTP"
                       // maxWidth={"40%"}
                       onChange={(e) => setOtp(e.target.value)}
