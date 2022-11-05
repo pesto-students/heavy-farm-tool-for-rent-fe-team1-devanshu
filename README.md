@@ -1,21 +1,48 @@
-# Pesto Assignments
+# Heavy Farm tool for Rent
 
-Welcome to Pesto assignments.
+![HEFTR Logo](./public/apple-touch-icon.png)
 
 
-## How to solve assignments
+HEFTR is filling the gap between Man and the Machine. Growing crops requires a lot of manpower, and finding cheap labor is a hectic job. HEFTR brings the solution for doing hardwork involved in growing crops by using specialized heavy advanced machinery.This breaks down the man's effort to minimal and also reduces the time and the cost.
+## Table of Contents
 
-Weekly Assignments will be shared by your mentor or instructor.
+1. [Demo](#demo)
+2. [Installation](#installation)
+3. [Technology Stack](#Technology-Stack)
+4. [Authors](#authors)
+5. [License](#license)
+## Demo
 
-Make sure master or main branch is protected and you are not able to push any code directly to master.
+https://heavy-farm-tool.netlify.app/
 
-- Clone this repo to your local.
-- Checkout to new branch for submission. Suggestion you can name new branch week wise - branch for week 1 assignment can be week1
+## Installation
+
+Install Evolve Fitness with npm
+
 ```bash
-git checkout -b week1
+  git clone https://github.com/pesto-students/heavy-farm-tool-for-rent-fe-team1-devanshu
+
+  npm Install
+
+  npm start
 ```
-- Create Assignment week folder in root directory(if it doesn't exist) for eg. for solving week 1 assignment create folder with name "week1".
-- You can create subfolders in main week(week1) folder if required.
-- Add proper readme [(How to Write proper readme](https://meakaakka.medium.com/a-beginners-guide-to-writing-a-kickass-readme-7ac01da88ab3) )in week's folder or subfolder explaining about assignment, how to run assignment and any other instructions. 
-- Raise a PR against master and add your mentor as reviewer
-- Resolve PR comments if any and once your mentor approves your PR, Merge it.
+## Technology Stack
+
+We have used MERN stack for the project with some new technologies.
+
+- [React JS](https://reactjs.org/)
+- [Bootstrap](https://react-bootstrap.github.io/components/alerts/)
+- [Axios](https://axios-http.com/docs/intro)
+- [Tailwind](https://tailwindcss.com/)
+- [Firebase](https://firebase.google.com/)
+
+
+## Authors
+
+- [Shubham yadav](https://github.com/shubhamdsm)
+- [Pranav Mishra](https://github.com/parnidadu)
+
+
+## License
+
+[MIT](https://opensource.org/licenses/MIT)
